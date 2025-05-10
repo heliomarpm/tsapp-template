@@ -102,6 +102,14 @@ npm install
 ```
 ## ⚙️ Configuration Guide
 
+### Workflow permissions
+
+You'll need to update the workflow permissions in your repository.
+
+- Access the repository's `Settings` section
+- Access Actions in the side menu
+- Check the `Read and write permissions` option
+
 ### Documentation Page
 
 see [TypeDoc Vitepress](https://www.typedoc-plugin-markdown.org/plugins/vitepress/quick-start)
