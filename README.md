@@ -108,7 +108,7 @@ You'll need to update the workflow permissions in your repository.
 
 - Access the repository's `Settings` section
 - Access Actions in the side menu
-- Check the `Read and write permissions` option
+- Check the `Read and write permissions` option and `Allow GitHub Actions to create and approve pull requests`
 
 ### Documentation Page
 
