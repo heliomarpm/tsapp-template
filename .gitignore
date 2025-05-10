@@ -134,3 +134,12 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+node_modules
+dist
+coverage
+.qodo
+.env
+.docs/.vitepress/cache
+.docs/typedoc/*
+.docs/typedoc/!typedoc-sidebar.json
