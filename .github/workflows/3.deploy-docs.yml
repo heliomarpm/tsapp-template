@@ -1,0 +1,64 @@
+name: Deploy Documentation
+on:
+  workflow_dispatch:  # permite execução manual
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - '.docs/**'
+      - 'typedoc.json'
+  workflow_run:
+    workflows: ["Release"]
+    branches: [main]
+    types: [completed]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Permissão ESSENCIAL
+      pages: write     # Novo tipo de permissão para GitHub Pages
+      id-token: write  # Necessário para OIDC
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build docs
+        run:
+          npm run docs
+
+      # - name: Copy additional files
+      #   run: |
+      #     mkdir -p .docs/.vitepress/typedoc/docs/
+      #     cp LICENSE .docs/.vitepress/typedoc
+      #     cp ./docs/*.md .docs/.vitepress/typedoc/docs/
+
+      - name: Debug Files
+        run: ls -R .docs/.vitepress/dist
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .docs/.vitepress/dist
+          destination_dir: docs
+          keep_files: false
+          force_orphan: true  # Importante para evitar conflitos
+          # cname: seu-dominio.com  # Opcional se usar domínio customizado
+
+      - name: Show Documentation URL
+        run: |
+          echo "📚 Documentation deployed to:"
+          echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          echo "Custom domain? Check Settings > Pages"

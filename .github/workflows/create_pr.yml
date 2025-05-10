@@ -1,0 +1,70 @@
+name: Auto Create/Update PR
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - develop
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+jobs:
+  pr_develop_to_main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gh
+
+      - name: Authenticate GitHub CLI
+        run: gh auth setup-git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Ensure labels exist
+        run: |
+          gh label create "auto-generated" --description "PR criado automaticamente" --color "0E8A16" || true
+          gh label create "pending-review" --description "Aguardando revisão" --color "FBCA04" || true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate commit log
+        run: |
+          echo "" > .github/commit_log.md
+          echo "---" > .github/commit_log.md
+          echo "### 📜 Commits incluídos:" > .github/commit_log.md
+          git log origin/main..origin/develop --oneline >> .github/commit_log.md
+          cat .github/pull_request_auto.md .github/commit_log.md >> .github/pr_body.md
+
+      - name: Check if PR exists and create if not exists
+        run: |
+          # Verificar se já existe uma PR
+          PR_NUMBER=$(gh pr list --base main --head develop --json number --jq '.[0].number')
+
+          if [ -z "$PR_NUMBER" ]; then
+            # Se não houver PR, cria uma nova
+            echo "Nenhuma PR encontrada, criando nova PR..."
+            gh pr create \
+              --base main \
+              --head develop \
+              --title "🔀 develop → main: $(date +'%Y-%m-%d')" \
+              --body-file .github/pr_body.md \
+              --assignee "${{ github.actor }}" \
+              --label "auto-generated,pending-review"
+          else
+            # Se a PR já existir, atualiza o corpo
+            echo "Encontrado PR aberta com o número $PR_NUMBER, atualizando..."
+            gh pr edit $PR_NUMBER --body-file .github/pr_body.md
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

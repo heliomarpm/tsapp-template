@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  workflow_run:
+    workflows: ["Test"]
+    branches: [main] #, develop]
+    types: [completed]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
+    permissions:
+      contents: write
+      pull-requests: write
+      checks: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Crítico para o semantic-release analisar histórico
+          ref: ${{ github.event.workflow_run.head_sha }} # Usa o commit exato do teste
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts # Evita scripts pós-install desnecessários
+
+      - name: Run Semantic Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}  # Opcional: só se publicar no npm
+        run: npx semantic-release --debug
+        # run: |
+        #   if [ "${{ github.event.workflow_run.head_branch }}" == "main" ]; then
+        #     npx semantic-release --debug
+        #   else
+        #     npx semantic-release --debug --branches ${{ github.ref_name }}
+        #   fi
