@@ -15,7 +15,6 @@ jobs:
         with:
           fetch-depth: 0  # Necessário para cobertura precisa
 
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
