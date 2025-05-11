@@ -5,6 +5,15 @@ on:
     branches: [main]
     paths:
       - 'src/**'
+    paths-ignore:
+      - "**/*.sh"
+      - "**/.*"
+      - "**/_*"
+      - "**/*.txt"
+      - "**/*.adoc"
+      - "**/*.md"
+      - ".github/**"
+      - "!.github/workflows/2.relese.yml"
   workflow_run:
     workflows: ["Test"]
     branches: [main]
