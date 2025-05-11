@@ -4,10 +4,8 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows: ["Test"]
-    branches:
-      - develop
-    types:
-      - completed
+    branches: [develop]
+    types: [completed]
 
 permissions:
   contents: write
@@ -17,6 +15,7 @@ permissions:
 jobs:
   pr_develop_to_main:
     runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name: Checkout repository
