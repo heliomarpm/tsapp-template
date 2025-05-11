@@ -60,10 +60,10 @@ jobs:
         run: npm ci --ignore-scripts # Evita scripts pós-install desnecessários
 
 
-      # - name: Debug commits
-      #   run: |
-      #     git log --oneline -n 10
-      #     echo "Current branch: $(git branch --show-current)"
+      - name: Debug commits
+        run: |
+          git log --oneline -n 10
+          echo "Current branch: $(git branch --show-current)"
 
       - name: Debug environment
         run: |
@@ -74,8 +74,8 @@ jobs:
           git remote -v
           git branch -a
 
-      - name: Dump GitHub context
-        run: echo "${{ toJson(github) }}"
+      # - name: Dump GitHub context
+      #   run: echo "${{ toJson(github) }}"
 
       - name: Run Semantic Release
         env:
