@@ -1,6 +1,10 @@
 name: Release
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
   workflow_run:
     workflows: ["Test"]
     branches: [main]

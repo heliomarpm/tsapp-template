@@ -1,12 +1,12 @@
 name: Deploy Documentation
 on:
-  workflow_dispatch:  # permite execução manual
-  push:
-    branches: [main]
-    paths:
-      - 'src/**'
-      - '.docs/**'
-      - 'typedoc.json'
+  # workflow_dispatch:  # permite execução manual
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - 'src/**'
+  #     - '.docs/**'
+  #     - 'typedoc.json'
   workflow_run:
     workflows: ["Release"]
     branches: [main]
