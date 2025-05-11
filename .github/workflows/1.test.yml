@@ -29,7 +29,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          run: npx vitest run --reporter=verbose --coverage --outputFile=coverage/coverage-summary.json
+          npx vitest run --reporter=verbose --coverage --outputFile=coverage/coverage-summary.json
           # Garante que a pasta de relatório existe
           mkdir -p coverage/lcov-report
 

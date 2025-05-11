@@ -60,8 +60,7 @@ jobs:
               --title "🔀 develop → main: $(date +'%Y-%m-%d')" \
               --body-file .github/pr_body.md \
               --assignee "${{ github.actor }}" \
-              --label "auto-generated"
-              --label "pending-review"
+              --label "auto-generated,pending-review"
           else
             # Se a PR já existir, atualiza o corpo
             echo "Encontrado PR aberta com o número $PR_NUMBER, atualizando..."
