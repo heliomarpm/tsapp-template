@@ -3,26 +3,26 @@ name: Release
 on:
   push:
     branches: [main]
-    # paths:
-    #   - 'src/**'
-    paths-ignore:
-      - "**/*.sh"
-      - "**/.*"
-      - "**/_*"
-      - "**/*.txt"
-      - "**/*.adoc"
-      - "**/*.md"
-      - ".github/**"
-      - "!.github/workflows/2.relese.yml"
-  # workflow_run:
-  #   workflows: ["Test"]
-  #   branches: [main]
-  #   types: [completed]
+    paths:
+      - "src/**"
+    # paths-ignore:
+    #   - "**/*.sh"
+    #   - "**/.*"
+    #   - "**/_*"
+    #   - "**/*.txt"
+    #   - "**/*.adoc"
+    #   - "**/*.md"
+    #   - ".github/**"
+    #   - "!.github/workflows/2.relese.yml"
+  workflow_run:
+    workflows: ["Test"]
+    branches: [main]
+    types: [completed]
 
 jobs:
   release:
     runs-on: ubuntu-latest
-    # if: github.event.workflow_run.conclusion == 'success'
+    if: github.event.workflow_run.conclusion == 'success'
     permissions:
       contents: write
       pull-requests: write
@@ -33,6 +33,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Crítico para o semantic-release analisar histórico
+          ref: main
           # ref: ${{ github.event.workflow_run.head_sha }} # Usa o commit exato do teste
 
       - name: Setup Node.js
