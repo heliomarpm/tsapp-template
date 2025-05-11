@@ -2,7 +2,7 @@ name: Test
 
 on:
   push:
-    branches: [main]
+    branches: [develop]
   pull_request:
     branches: [main]
 
@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0  # Necessário para cobertura precisa
 
-          
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -27,15 +27,9 @@ jobs:
         run: npm ci
 
 
-      - name: Run tests
-        run: |
-          # Executa os testes com vitest
-          npx vitest run --reporter=verbose
-
-
       - name: Run tests with coverage
         run: |
-          npx vitest run --coverage --outputFile=coverage.json
+          run: npx vitest run --reporter=verbose --coverage --outputFile=coverage/coverage-summary.json
           # Garante que a pasta de relatório existe
           mkdir -p coverage/lcov-report
 
@@ -44,7 +38,8 @@ jobs:
         if: success()  # Só executa se os testes passarem
         run: |
           # Extrai a cobertura do relatório HTML
-          COVERAGE=$(grep -E "All files.+[0-9.]+%" coverage/lcov-report/index.html | awk '{print $NF}' || echo "unknown")
+          # COVERAGE=$(grep -E "All files.+[0-9.]+%" coverage/lcov-report/index.html | awk '{print $NF}' || echo "unknown")
+          COVERAGE=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
           echo "{\"coverage\":\"$COVERAGE\"}" > coverage-badge.json
           echo "✔️ Coverage: $COVERAGE"
 
@@ -55,18 +50,6 @@ jobs:
           name: coverage-report
           path: |
             coverage-badge.json
+            coverage/coverage-summary.json
             coverage/lcov-report
           retention-days: 3
-
-
-      - name: Deploy Badge to GitHub Pages
-        if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: /coverage/coverage-badge.json
-          destination_dir: .
-          publish_branch: gh-pages
-          keep_files: true
-          allow_empty_commit: true
-          force_orphan: true
