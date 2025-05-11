@@ -33,7 +33,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Crítico para o semantic-release analisar histórico
-          ref: ${{ github.event.workflow_run.head_sha }} # Usa o commit exato do teste
+          # ref: ${{ github.event.workflow_run.head_sha }} # Usa o commit exato do teste
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
