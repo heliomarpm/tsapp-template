@@ -8,7 +8,7 @@
  * Returns the string "Hello, World!".
  * @returns "Hello, World!"
  * @example
- * helloWorld(); // returns "Hello, World!"
+ * console.log(helloWorld()); // output: "Hello, World!"
  */
 function helloWorld() {
 	return "Hello, World!";
