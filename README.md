@@ -4,6 +4,7 @@
 
   [![CodeQL][url-codeql-badge]][url-codeql]
   [![Test][url-test-badge]][url-test]
+  ![Coverage][url-coverage-badge]
   [![Release][url-release-badge]][url-release]
 
   ![Node.js](https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white)
@@ -72,10 +73,50 @@ gitGraph
 
 Workflow  | Description | Trigger 
  ---  | --- | ---
-1.test.yml	| Runs unit tests	| Push/PR to main
+0.test.yml	| Runs unit tests	| Push/PR to main
+1.create_pr.yml	| Creates pull requests	| Push/PR to develop
 2.release.yml	| Generates releases	| Successful tests
 3.deploy-docs.yml	| Deploys docs	| Successful release
-create_pr.yml	| Creates pull requests	| Push/PR to develop
+
+<details>
+<summary>Show full workflow</summary>
+
+```mermaid
+---
+config:
+  layout: dagre
+  theme: neutral
+---
+flowchart TD
+    A["Commit into branch develop"] --> B["Run Test workflow"]
+    B --> C{"Test OK?"}
+    C -- Yes --> D["Create/Update Pull Request to main"]
+    D --> E["Approve code review"]
+    E --> F{"Code Review And Test, OK?"}
+    F -- Yes --> G["Merge into branch main"]
+    G --> H["Run Release workflow"]
+    H --> I["Run semantic-release"]
+    I --> J["Generate changelog, Create new release and tag version"]
+    J --> K["Publish documentation to GitHub Pages"]
+    C -- No --> X["Fix code and commit again"]
+    F -- No --> Y["Fix PR or resolve issues"]
+    style A fill:#e3f2fd,stroke:#2196f3,stroke-width:2px,color:#444
+    style B fill:#fff3e0,stroke:#fb8c00,stroke-width:2px,color:#444
+    style C fill:#ffe0e0,stroke:#e53935,stroke-width:2px,color:#444
+    style D fill:#e8f5e9,stroke:#43a047,stroke-width:2px,color:#444
+    style E fill:#f3e5f5,stroke:#8e24aa,stroke-width:2px,color:#444
+    style F fill:#ffe0e0,stroke:#e53935,stroke-width:2px,color:#444
+    style G fill:#e8f5e9,stroke:#43a047,stroke-width:2px,color:#444
+    style H fill:#fff3e0,stroke:#fb8c00,stroke-width:2px,color:#444
+    style I fill:#e3f2fd,stroke:#2196f3,stroke-width:2px,color:#444
+    style J fill:#dcedc8,stroke:#7cb342,stroke-width:2px,color:#444
+    style K fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#444
+    style X fill:#fbe9e7,stroke:#d84315,stroke-width:2px,color:#444
+    style Y fill:#fbe9e7,stroke:#d84315,stroke-width:2px,color:#444
+```
+
+</details>
+
 
 ### ❓ When to Use This Template
 
@@ -199,7 +240,9 @@ Help us maintain and improve this template:
 <!-- GitHub Actions badges -->
 [url-test-badge]: https://github.com/heliomarpm/tsapp-template/actions/workflows/1.test.yml/badge.svg
 [url-test]: https://github.com/heliomarpm/tsapp-template/actions/workflows/1.test.yml
-[url-coverage-badge]: https://img.shields.io/endpoint?url=https://heliomarpm.github.io/tsapp-template/coverage-badge.json&label=coverage&suffix=%25
+[url-coverage-badge]: https://img.shields.io/badge/coverage-dynamic.svg?label=coverage&color=informational&style=flat&logo=jest&query=$.coverage&url=https://heliomarpm.github.io/tsapp-template/docs/coverage-badge.json
+
+<!-- https://img.shields.io/endpoint?url=https://heliomarpm.github.io/tsapp-template/coverage-badge.json&label=coverage&suffix=%25 -->
 
 [url-release-badge]: https://github.com/heliomarpm/tsapp-template/actions/workflows/2.release.yml/badge.svg
 [url-release]: https://github.com/heliomarpm/tsapp-template/actions/workflows/2.release.yml

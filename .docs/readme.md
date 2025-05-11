@@ -37,10 +37,10 @@
 
 Workflow  | Description | Trigger 
  ---  | --- | ---
-1.test.yml	| Runs unit tests	| Push/PR to main
+0.test.yml	| Runs unit tests	| Push/PR to main
+1.create_pr.yml	| Creates pull requests	| Push/PR to develop
 2.release.yml	| Generates releases	| Successful tests
 3.deploy-docs.yml	| Deploys docs	| Successful release
-create_pr.yml	| Creates pull requests	| Push/PR to develop
 
 ### ❓ When to Use This Template
 

@@ -2,9 +2,12 @@ name: Auto Create/Update PR
 
 on:
   workflow_dispatch:
-  push:
+  workflow_run:
+    workflows: ["Test"]
     branches:
       - develop
+    types:
+      - completed
 
 permissions:
   contents: write
