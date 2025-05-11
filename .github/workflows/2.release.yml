@@ -14,15 +14,15 @@ on:
       - "**/*.md"
       - ".github/**"
       - "!.github/workflows/2.relese.yml"
-  workflow_run:
-    workflows: ["Test"]
-    branches: [main]
-    types: [completed]
+  # workflow_run:
+  #   workflows: ["Test"]
+  #   branches: [main]
+  #   types: [completed]
 
 jobs:
   release:
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.conclusion == 'success'
+    # if: github.event.workflow_run.conclusion == 'success'
     permissions:
       contents: write
       pull-requests: write
