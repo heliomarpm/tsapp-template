@@ -11,7 +11,7 @@
  * console.log(helloWorld()); // output: "Hello, World!"
  */
 function helloWorld() {
-	return "Hello, World!";
+	return "Hello, World!!";
 }
 
 /**
