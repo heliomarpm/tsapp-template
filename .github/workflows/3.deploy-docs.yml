@@ -8,9 +8,10 @@ on:
   #     - '.docs/**'
   #     - 'typedoc.json'
   workflow_run:
-    workflows: ["Release"]
+    workflows: ["Test", "Release"]
     branches: [main]
     types: [completed]
+ 
 
 jobs:
   deploy:

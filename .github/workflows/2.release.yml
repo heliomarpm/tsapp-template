@@ -1,33 +1,33 @@
 name: Release
 
 on:
-  workflow_run:
-    workflows: ["Test"]
+  # workflow_run:
+  #   workflows: ["Test"]
+  #   branches: [main]
+  #   types:
+  #     - completed
+
+  push:
     branches: [main]
-    types:
-      - completed
+    paths:
+      - 'src/**'
+      - '.releaserc'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/2.release.yml'
 
-  # push:
-  #   branches: [main]
-  #   paths:
-  #     - 'src/**'
-  #     - '.releaserc'
-  #     - 'package.json'
-  #     - 'package-lock.json'
-  #     - '.github/workflows/2.release.yml'
-
-  # pull_request:
-  #   branches: [main]
-  #   paths:
-  #     - 'src/**'
-  #     - '.releaserc'
-  #     - 'package.json'
-  #     - 'package-lock.json'
-  #     - '.github/workflows/2.release.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - '.releaserc'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/2.release.yml'
 jobs:
   release:
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.conclusion == 'success'
+    # if: github.event.workflow_run.conclusion == 'success'
     permissions:
       contents: write
       pull-requests: write
