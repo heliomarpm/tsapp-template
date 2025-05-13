@@ -158,7 +158,6 @@ see [TypeDoc Vitepress](https://www.typedoc-plugin-markdown.org/plugins/vitepres
 - First time: `npx vitepress init` 
 - Documentation code base: `npm run docs` or `npm run docs:dev`	
 
-
 ### Dry Run Releasing
 
 Test releasing without version bump:
@@ -174,6 +173,91 @@ npx semantic-release --dry-run
 | Requirement | Description |
 | - | - |
 Branch protection |	Require PR reviews before merge
+
+## 📑 Access Token (PAT) Configuration for Semantic Release
+
+In order for Semantic Release to perform `git push` on the protected branch (`main`), it is necessary to use a **Personal Access Token (PAT)** with appropriate permissions.
+
+Below are the recommended options and their implications:
+
+### 🔐 Option 1 — Classic Personal Access Token (PAT)
+
+✅ **Required permissions:**
+
+- `repo` (for read and write access to repositories)
+- `workflow` (for interacting with GitHub Actions)
+
+✅ **Features:**
+
+- A single token can be used in **any repository of the same user or organization**
+- Cannot restrict granular access to specific repositories or permissions (full access within the configured scope)
+
+✅ **How to use:**
+
+1. Create a Classic PAT in:  
+    `GitHub Settings → Developer Settings → Personal access tokens → Tokens (classic)`
+
+1. Enable the scopes:
+   - `repo`
+   - `workflow`
+
+2. Save the token as a secret in the repository:
+
+   - `Settings → Secrets and variables → Actions`
+   - Suggested name: `PAT_TOKEN`
+
+3. Reference in workflow:
+
+```yaml
+env:
+  GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+```
+
+### 🔐 Option 2 — Fine-grained Personal Access Token (PAT)
+
+✅ **Required permissions:**
+
+- `Actions: Read and write`
+- `Contents: Read and write`
+- `Metadata: Read-only`
+- (Optional) `Bypass branch protections` if you want to allow direct push even on protected branches
+
+✅ **Features:**
+
+- Allows you to restrict access to specific repositories at the time of creation
+- Controls permissions with more granularity and security
+- Needs to explicitly mark which repositories it will have access to
+- Can be used in multiple repositories **if configured to allow access to those repositories during token creation** (either by selecting "All repositories" or manually selecting multiple)
+
+
+✅ **How to use:**
+
+1. Create a Fine-grained PAT in:
+    `GitHub Settings → Developer Settings → Personal access tokens → Fine-grained tokens`
+
+2. Set:
+   - Repositories: select all required or check “All repositories”
+   - Permissions:
+     - `Contents: Read and write`
+     - `Actions: Read and write`
+     - `Metadata: Read-only`
+     - (Optional) `Bypass branch protections`
+
+3. Save the token as a secret in the repository:
+   - `Settings → Secrets and variables → Actions`
+   - Suggested name: `PAT_TOKEN`
+
+4. Reference in workflow:
+```yaml
+env:
+  GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+```
+
+
+> [!NOTE] 
+> The token must replace the default GITHUB_TOKEN from GitHub Actions (which respects branch protection rules) so that Semantic Release can git push and create tags/releases.
+> 
+> The use of PAT is recommended only for controlled workflows, as Classic PAT grants full access within the defined scope.
 
 ---
 ## 📦 Dependencies
@@ -238,9 +322,9 @@ Help us maintain and improve this template:
 [url-github-sponsors]: https://github.com/sponsors/heliomarpm
 
 <!-- GitHub Actions badges -->
-[url-test-badge]: https://github.com/heliomarpm/tsapp-template/actions/workflows/1.test.yml/badge.svg
-[url-test]: https://github.com/heliomarpm/tsapp-template/actions/workflows/1.test.yml
-[url-coverage-badge]: https://img.shields.io/badge/coverage-dynamic.svg?label=coverage&color=informational&style=flat&logo=jest&query=$.coverage&url=https://heliomarpm.github.io/tsapp-template/docs/coverage-badge.json
+[url-test-badge]: https://github.com/heliomarpm/tsapp-template/actions/workflows/0.test.yml/badge.svg
+[url-test]: https://github.com/heliomarpm/tsapp-template/actions/workflows/0.test.yml
+[url-coverage-badge]: https://img.shields.io/badge/coverage-dynamic.svg?label=coverage&color=informational&style=flat&logo=jest&query=$.coverage&url=https://heliomarpm.github.io/tsapp-template/coverage-badge.json
 
 <!-- https://img.shields.io/endpoint?url=https://heliomarpm.github.io/tsapp-template/coverage-badge.json&label=coverage&suffix=%25 -->
 

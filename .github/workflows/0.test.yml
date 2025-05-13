@@ -34,8 +34,8 @@ jobs:
         if: success() && github.ref == 'refs/heads/main'  # Só executa se os testes passarem na branch main
         run: |
           # Extrai a cobertura do relatório HTML
-          # COVERAGE=$(grep -E "All files.+[0-9.]+%" coverage/lcov-report/index.html | awk '{print $NF}' || echo "unknown")
-          COVERAGE=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
+          COVERAGE=$(grep -E "All files.+[0-9.]+%" coverage/lcov-report/index.html | awk '{print $NF}' || echo "unknown")
+          # COVERAGE=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
           echo "{\"coverage\":\"$COVERAGE\"}" > coverage-badge.json
           echo "✔️ Coverage: $COVERAGE"
 
