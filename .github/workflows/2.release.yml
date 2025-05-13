@@ -1,5 +1,4 @@
 name: Release
-
 on:
   # workflow_run:
   #   workflows: ["Test"]
@@ -67,7 +66,6 @@ jobs:
       #     echo "GITHUB_SHA: $GITHUB_SHA"
       #     git remote -v
       #     git branch -a
-
 
       - name: Run Semantic Release
         env:

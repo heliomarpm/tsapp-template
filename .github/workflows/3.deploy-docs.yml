@@ -41,6 +41,9 @@ jobs:
         run:
           npm run docs
 
+      - name: Debug Files
+        run: ls -R .docs/.vitepress/dist
+
       - name: Run tests with coverage
         run: |
           npx vitest run --coverage --outputFile=coverage/coverage-summary.json
@@ -48,7 +51,6 @@ jobs:
           mkdir -p coverage/lcov-report
 
       - name: Generate Coverage Badge
-        if: success() && github.ref == 'refs/heads/main'  # Só executa se os testes passarem na branch main
         run: |
           # Extrai a cobertura do relatório HTML
           # COVERAGE=$(grep -E "All files.+[0-9.]+%" coverage/lcov-report/index.html | awk '{print $NF}' || echo "unknown")
@@ -67,8 +69,7 @@ jobs:
       #     cp LICENSE .docs/.vitepress/typedoc
       #     cp ./docs/*.md .docs/.vitepress/typedoc/docs/
 
-      - name: Debug Files
-        run: ls -R .docs/.vitepress/dist
+
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
