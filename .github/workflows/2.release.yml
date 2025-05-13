@@ -16,14 +16,14 @@ on:
       - 'package-lock.json'
       - '.github/workflows/2.release.yml'
 
-  pull_request:
-    branches: [main]
-    paths:
-      - 'src/**'
-      - '.releaserc'
-      - 'package.json'
-      - 'package-lock.json'
-      - '.github/workflows/2.release.yml'
+  # pull_request:
+  #   branches: [main]
+  #   paths:
+  #     - 'src/**'
+  #     - '.releaserc'
+  #     - 'package.json'
+  #     - 'package-lock.json'
+  #     - '.github/workflows/2.release.yml'
 jobs:
   release:
     runs-on: ubuntu-latest
