@@ -8,10 +8,10 @@ on:
   #     - '.docs/**'
   #     - 'typedoc.json'
   workflow_run:
-    workflows: ["Test", "Release"]
+    workflows: ["Test"]
     branches: [main]
     types: [completed]
- 
+
 
 jobs:
   deploy:
@@ -37,11 +37,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-
       - name: Build docs
         run:
           npm run docs
-
 
       - name: Download coverage badge artifact
         uses: actions/download-artifact@v4
