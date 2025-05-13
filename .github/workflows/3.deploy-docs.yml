@@ -41,11 +41,20 @@ jobs:
         run:
           npm run docs
 
-      - name: Download coverage badge artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: coverage-report
-          path: coverage
+      - name: Run tests with coverage
+        run: |
+          npx vitest run --coverage --outputFile=coverage/coverage-summary.json
+          # Garante que a pasta de relatório existe
+          mkdir -p coverage/lcov-report
+
+      - name: Generate Coverage Badge
+        if: success() && github.ref == 'refs/heads/main'  # Só executa se os testes passarem na branch main
+        run: |
+          # Extrai a cobertura do relatório HTML
+          # COVERAGE=$(grep -E "All files.+[0-9.]+%" coverage/lcov-report/index.html | awk '{print $NF}' || echo "unknown")
+          COVERAGE=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
+          echo "{\"coverage\":\"$COVERAGE\"}" > coverage-badge.json
+          echo "✔️ Coverage: $COVERAGE"
 
       - name: Copy coverage badge to docs
         run: |
