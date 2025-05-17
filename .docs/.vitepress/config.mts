@@ -1,6 +1,7 @@
 import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
+// https://vitepress.dev/pt/reference/default-theme-config
 export default defineConfig({
 	title: "TSApp Template",
 	base: "/tsapp-template/",
@@ -21,20 +22,29 @@ export default defineConfig({
 	ignoreDeadLinks: true,
 	themeConfig: {
 		// https://vitepress.dev/reference/default-theme-config
+		// outlineTitle: 'This page',
+		logo: '../logo.png',
 		nav: [
 			{ text: "Home", link: "/" },
 			// { text: 'Examples', link: '/markdown-examples' }
 		],
 
-		sidebar: {
-			"/typedoc/": [
-				{
-					text: "API",
-					items: require("../typedoc/typedoc-sidebar.json"),
-				},
-			],
-		},
+		sidebar: [
+			{
+				text: "📦 API",
+				items: require("../app/typedoc-sidebar.json"),
+			},
+			{
+				text: "📖 Developer Docs",
+				items: [
+					{ text: "Project", link: "/app" },
+					{ text: "Contribution Guide", link: "/app/_media/contributing" },
+					{ text: "Code of Conduct", link: "/app/_media/code_of_conduct" },
+				],
+			},
+		],
 		socialLinks: [
+			// icons 'discord' | 'facebook' | 'github'| 'instagram'| 'linkedin'| 'slack'| 'twitter'| 'youtube'
 			{ icon: "github", link: "https://github.com/heliomarpm/tsapp-template" },
 			{
 				icon: "npm",
@@ -42,6 +52,10 @@ export default defineConfig({
 				// 	svg: '<svg color="#CB3837" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>npm</title><path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z"/></svg>',
 				// },
 				link: "https://www.npmjs.com/~heliomarpm",
+			},
+			{
+				icon: "linkedin",
+				link: "https://www.linkedin.com/in/heliomarpm",
 			},
 			{
 				icon: {
@@ -78,14 +92,14 @@ export default defineConfig({
 		],
 		// carbonAds: { code: "CW7I62JY", placement: "docsuaparserdev" },
 		footer: {
-			message: "TSApp-Template is licensed under MIT",
+			message: "TSApp-Template is under the MIT License.",
 			copyright: "Copyright (c) 2025 Heliomar P. Marques",
 		},
 		lastUpdatedText: "Updated Date",
-		editLink: {
-			pattern: "https://github.com/heliomarpm/tsapp-template/tree/main/.docs/:path",
-			text: "Edit this page on GitHub",
-		},
+		// editLink: {
+		// 	pattern: "https://github.com/heliomarpm/tsapp-template/tree/main/.docs/:path",
+		// 	text: "Edit this page on GitHub",
+		// },
 	},
 	// markdown: {
 	// 	lineNumbers: true,

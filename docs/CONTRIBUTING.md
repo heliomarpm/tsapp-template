@@ -1,29 +1,39 @@
-# Contributing
+# 🤝 Contributing Guide
 
-👍 🎉 Thanks for taking the time to contribute! 🎉 👍
+Thank you for considering contributing to this project! Your help makes it better.
 
-Any contributions to this repository are most welcome. If you are planning to contribute, please take time to read this file and follow the guidelines.
+## 📌 How to Contribute
 
-## How to
+1. **Fork the repository**
+2. **Create a new branch** for your fix or feature:
 
-#### There are quite a few ways to contribute, but following is the recommended approach.
+   ```bash
+   git checkout -b feature/my-new-feature
+   ```
+3. **Commit your changes** using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+4. **Push to your fork** and open a Pull Request
 
-`1. Fork this repository`
+## 📖 Contribution Rules
 
-When you fork this repository you will have a personal copy of the repository where you will have complete access to edit any file. 
-Edit the files you want to and commit the changes.
+* Follow existing code style and naming conventions.
+* Add clear and descriptive commit messages.
+* Update or add tests when applicable.
+* If adding new features, update the documentation.
 
-`2. Make a Pull request`
+<!-- 
+## 📦 Project Scripts
 
-When you are done editing the file(s) and have commited the changes to the fork, you can now make a pull request to this repository.
-You will see a Pull request option alongside compare just above the Latest commit message in your fork. 
-Please beaware making a pull request to your own repository and making a pull request to this repository are two different things.
-You need to click on the `Pull request button` and not the `Pull requests tab`. 
+* `npm run test` — run unit tests
+* `npm run docs:dev` — run documentation locally
+* `npm run release:test` — dry run semantic release 
+-->
 
-`3. Wait for the changes to get approved`
+## 💡 Suggestions & Feedback
 
-After making a Pull request you will see your pull request listed in the `Pull requests section` in the original repository.
-Your changes will be reviewed and once the changes are approved they will be merged and hence will get applied to the original repository.
-You might be asked to improve or make further changes, if the the commits you made could not be approved for some reason. In that case, you will need to edit the files again. 
-Please note that, you do not have to make another pull request, just make the changes you are supposed to in the fork and it will get reflected in the already made pull request.
+Issues and feature requests are welcome! Use the [Issues tab](https://github.com/heliomarpm/tsapp-template/issues) to report bugs or request new features.
 
+## 📑 License
+
+By contributing, you agree that your contributions will be licensed under the project’s [MIT License](./LICENSE.md).
+
+Thanks for helping improve this project! 🚀
