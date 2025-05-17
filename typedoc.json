@@ -1,8 +1,8 @@
 {
   "entryPoints": ["./src/*"],
-  "out": "./.docs/typedoc",
+  "out": "./.docs/app",
   "docsRoot": "./.docs",
-  "readme": "./.docs/readme.md",
+  "readme": "./docs/INDEX-DOCS.md",
   "plugin": ["typedoc-plugin-markdown", "typedoc-vitepress-theme"],
   "indexFormat": "table",
   "useCodeBlocks": true,

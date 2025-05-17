@@ -141,5 +141,5 @@ coverage
 .qodo
 .env
 .docs/.vitepress/cache
-.docs/typedoc/*
-.docs/typedoc/!typedoc-sidebar.json
+.docs/app/*
+#!.docs/app/typedoc-sidebar.json

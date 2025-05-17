@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Documentation
-      link: /typedoc/index
+      link: /app/index
     # - theme: alt
     #   text: API Examples
     #   link: /api-examples
