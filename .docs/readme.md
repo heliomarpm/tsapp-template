@@ -128,7 +128,7 @@ Help us maintain and improve this template:
 🧾 Improving the documentation \
 📢 Share with others
 
-💰 Supporting via GitHub Sponsors, Ko-fi, Paypal, LiberaPay 
+💵 Supporting via GitHub Sponsors, Ko-fi, Paypal or Liberapay, you decide. 😉
 
 <div class="badges">
 

@@ -276,10 +276,12 @@ We welcome contributions! Please read:
 Thank you to everyone who has already contributed to the project!
 
 <a href="https://github.com/heliomarpm/tsapp-template/graphs/contributors" target="_blank">
-  <img src="https://contrib.rocks/image?repo=heliomarpm/tsapp-template" />
+  <!-- <img src="https://contrib.rocks/image?repo=heliomarpm/tsapp-template" /> -->
+  <img src="https://contrib.nn.ci/api?repo=heliomarpm/tsapp-template&no_bot=true" />
 </a>
 
-###### Made with [contrib.rocks](https://contrib.rocks).
+<!-- ###### Made with [contrib.rocks](https://contrib.rocks). -->
+###### Made with [contrib.nn](https://contrib.nn.ci).
 
 ### ❤️ Support this project
 
@@ -292,7 +294,7 @@ Help us maintain and improve this template:
 🧾 Improving the documentation \
 📢 Share with others
 
-💰 Supporting via GitHub Sponsors, Ko-fi, Paypal, LiberaPay 
+💵 Supporting via GitHub Sponsors, Ko-fi, Paypal or Liberapay, you decide. 😉
 
 <div class="badges">
 
