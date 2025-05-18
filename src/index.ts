@@ -1,5 +1,5 @@
 /**
- * Template for Typescript applications v2.1
+ * Template for Typescript applications v2.2
  * @module helloWorld
  * @author Heliomar P. Marques
  */
