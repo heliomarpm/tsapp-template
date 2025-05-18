@@ -38,8 +38,8 @@ export default defineConfig({
 				text: "📖 Developer Docs",
 				items: [
 					{ text: "Project", link: "/app" },
-					{ text: "Contribution Guide", link: "/app/_media/contributing" },
-					{ text: "Code of Conduct", link: "/app/_media/code_of_conduct" },
+					{ text: "Contribution Guide", link: "/app/_media/CONTRIBUTING" },
+					{ text: "Code of Conduct", link: "/app/_media/CODE_OF_CONDUCT" },
 				],
 			},
 		],
