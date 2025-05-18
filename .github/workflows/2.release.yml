@@ -25,8 +25,8 @@ on:
   #     - '.github/workflows/2.release.yml'
 jobs:
   release:
-    runs-on: ubuntu-latest
     if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
@@ -37,12 +37,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
+          # ref: ${{ github.event.workflow_run.head_sha }} # Usa o commit exato do teste
+          ref: main # força o checkout na branch main
           fetch-depth: 0 # Crítico para o semantic-release analisar histórico
           fetch-tags: true
-          # ref: main # força o checkout na branch main
-          ref: ${{ github.event.workflow_run.head_sha }} # Usa o commit exato do teste
 
-      - run: git fetch origin "+refs/heads/*:refs/remotes/origin/*"
+      - name: Confirm current branch
+        run: git branch --show-current
+
+      # - run: git fetch origin "+refs/heads/*:refs/remotes/origin/*"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -66,6 +69,11 @@ jobs:
       #     echo "GITHUB_SHA: $GITHUB_SHA"
       #     git remote -v
       #     git branch -a
+
+      - name: Create GitHub token permissions
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
 
       - name: Run Semantic Release
         env:

@@ -5,7 +5,8 @@ on:
   workflow_run:
     workflows: ["Test"]
     branches: [develop]
-    types: [completed]
+    types:
+      - completed
 
 permissions:
   contents: write
@@ -13,9 +14,19 @@ permissions:
   actions: write
 
 jobs:
-  pr_develop_to_main:
-    runs-on: ubuntu-latest
+  create-pr:
     if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+
+    # steps:
+    #   - name: Create Pull Request to Main
+    #     uses: repo-sync/pull-request@v2
+    #     with:
+    #       source_branch: develop
+    #       destination_branch: main
+    #       github_token: ${{ secrets.PAT_TOKEN }}
+    #       pr_title: 'Merge develop into main'
+    #       pr_body: 'Automated PR created by workflow'
 
     steps:
       - name: Checkout repository

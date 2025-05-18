@@ -26,7 +26,7 @@ If you witness or experience unacceptable behavior, please report it by contacti
 
 ## 📑 License
 
-This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/version/2.0/code_of_conduct/).
+This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/version/2/0/code_of_conduct/).
 
 ---
 
