@@ -23,7 +23,7 @@ export default defineConfig({
 	themeConfig: {
 		// https://vitepress.dev/reference/default-theme-config
 		// outlineTitle: 'This page',
-		logo: '../logo.png',
+		logo: { src: "../logo.png", width: 24, height: 24 },
 		nav: [
 			{ text: "Home", link: "/" },
 			// { text: 'Examples', link: '/markdown-examples' }
@@ -59,7 +59,7 @@ export default defineConfig({
 			},
 			{
 				icon: {
-					svg: '<svg version="1.1" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#d2007c" stroke="#d2007c"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M17.625 1.499c-2.32 0-4.354 1.203-5.625 3.03-1.271-1.827-3.305-3.03-5.625-3.03C3.129 1.499 0 4.253 0 8.249c0 4.275 3.068 7.847 5.828 10.227a33.14 33.14 0 0 0 5.616 3.876l.028.017.008.003-.001.003c.163.085.342.126.521.125.179.001.358-.041.521-.125l-.001-.003.008-.003.028-.017a33.14 33.14 0 0 0 5.616-3.876C20.932 16.096 24 12.524 24 8.249c0-3.996-3.129-6.75-6.375-6.75zm-.919 15.275a30.766 30.766 0 0 1-4.703 3.316l-.004-.002-.004.002a30.955 30.955 0 0 1-4.703-3.316c-2.677-2.307-5.047-5.298-5.047-8.523 0-2.754 2.121-4.5 4.125-4.5 2.06 0 3.914 1.479 4.544 3.684.143.495.596.797 1.086.796.49.001.943-.302 1.085-.796.63-2.205 2.484-3.684 4.544-3.684 2.004 0 4.125 1.746 4.125 4.5 0 3.225-2.37 6.216-5.048 8.523z"></path></g></svg>',
+					svg: '<svg class="shake" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="red" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
 				},
 				link: "https://github.com/sponsors/heliomarpm",
 			},
@@ -92,8 +92,8 @@ export default defineConfig({
 		],
 		// carbonAds: { code: "CW7I62JY", placement: "docsuaparserdev" },
 		footer: {
-			message: "TSApp-Template is under the MIT License.",
-			copyright: "Copyright (c) 2025 Heliomar P. Marques",
+			message: "Released under the MIT License",
+			copyright: "© 2025 <a href='https://navto.me/heliomarpm'>Heliomar P. Marques</a>",
 		},
 		lastUpdatedText: "Updated Date",
 		// editLink: {
