@@ -6,6 +6,7 @@ export default defineConfig({
 	title: "TSApp Template",
 	base: "/tsapp-template/",
 	description: "Template for Node and Typescript Application",
+	cleanUrls: true,
 	// head: [
 	// 	["meta", { name: "msvalidate.01", content: "F4D861C3287B312C6D147ECEC9B85E5E" }],
 	// 	["meta", { name: "google-site-verification", content: "lJpOPhia4HtRabTKEdpgyB_MWRKamHC6pfjFqekWiH0" }],
