@@ -1,3 +1,29 @@
+# [1.1.0](https://github.com/heliomarpm/tsapp-template/compare/v1.0.0...v1.1.0) (2025-05-18)
+
+
+### Bug Fixes
+
+* :sparkles: atualizar configuração do plugin @semantic-release/github ([1a7cfd7](https://github.com/heliomarpm/tsapp-template/commit/1a7cfd7d58ddd1ab3a1c3f8b339fee5c305867ac))
+* :sparkles: atualizar configuração do workflow de release ([8e9e783](https://github.com/heliomarpm/tsapp-template/commit/8e9e7833b4419e6f9912567b6727515628391cba))
+* 📝 Atualiza a versão do template da aplicação Typescript para 1.1.1 ([9ff493a](https://github.com/heliomarpm/tsapp-template/commit/9ff493a6c0621ca9914f353211a2ab2806632fa3))
+* change git plugin configuration to disable push on release ([1424afc](https://github.com/heliomarpm/tsapp-template/commit/1424afcd8a3b7e9de576ad47d75c9b5ed949cd90))
+* remove "Release" workflow from documentation deployment trigger ([d556042](https://github.com/heliomarpm/tsapp-template/commit/d5560424779f67d09529352090717e90a5f20be5))
+* remove unnecessary debug step and add file listing for documentation deployment ([68cff13](https://github.com/heliomarpm/tsapp-template/commit/68cff1344e28047f5a5b7f003de6c1ecb677094e))
+* revert checkout reference to use the main branch and remove develop branch from configuration ([a8ac53a](https://github.com/heliomarpm/tsapp-template/commit/a8ac53a95e8cda71692cb1dec701766cefe7ad38))
+* revert coverage badge generation method to use HTML report instead of JSON summary ([2a9db38](https://github.com/heliomarpm/tsapp-template/commit/2a9db383f0565338af291042957f3f0ab886fdd7))
+* update application template version in header comment ([a4f04d7](https://github.com/heliomarpm/tsapp-template/commit/a4f04d7a12e7144504113f502a6da5f52a0d4c3c))
+* update coverage badge path in deployment workflow ([81b71dc](https://github.com/heliomarpm/tsapp-template/commit/81b71dc602ff4853588cb74611b1a2954c2b5272))
+* update GitHub Actions to use PAT_TOKEN for semantic release and adjust release configuration ([f20a83b](https://github.com/heliomarpm/tsapp-template/commit/f20a83bc5e8adff76c66c12ee2a5577b20c7411c))
+* update template version in helloWorld module documentation ([c36f73c](https://github.com/heliomarpm/tsapp-template/commit/c36f73c76e2f3da8c2370e705d95a9024453e78a))
+* update workflow triggers for release and documentation deployment ([3ab6740](https://github.com/heliomarpm/tsapp-template/commit/3ab674031628234bc5aae2f760ef0c86b10a7bb8))
+
+
+### Features
+
+* :bulb: atualizar versão do template para aplicações Typescript v2.1 ([9d51ebe](https://github.com/heliomarpm/tsapp-template/commit/9d51ebee7fd507af43bbfa6803f8944e1dcc14b8))
+* teste para nova release ([42a5647](https://github.com/heliomarpm/tsapp-template/commit/42a56470def7151816d762f499d7da99ca5008a3))
+* teste release ([370c4f4](https://github.com/heliomarpm/tsapp-template/commit/370c4f4bfb2f9dfe441b4ab913d3af5fe69fa287))
+
 # 1.0.0 (2025-05-12)
 
 
