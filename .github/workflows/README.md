@@ -25,8 +25,8 @@ graph TD
 2. **Merge da Pull Request na `main`**
    - 📦 Aciona novamente o workflow [`test.yml`](./0.test.yml) na `main`.
    - 📦 Se os testes passarem:
-     - Roda o workflow [`release.yml`](./2.release.yml) para gerar uma nova release usando o `semantic-release`.
-     - Roda o workflow [`deploy-docs.yml`](./3.deploy-docs.yml) para publicar a documentação.
+     - Roda o workflow [`deploy-docs.yml`](./2.deploy-docs.yml) para publicar a documentação.
+     - Roda o workflow [`release.yml`](./3.release.yml) para gerar uma nova release usando o `semantic-release`.
 
 ---
 
@@ -36,8 +36,8 @@ graph TD
 |:-------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------|
 | `0.test.yml`       | Executa testes automatizados no projeto.                                                     | `push` para `develop` e `main`        |
 | `1.create-pr.yml`  | Cria uma Pull Request automaticamente da `develop` para a `main` após sucesso nos testes.    | `workflow_run` do `test.yml`          |
-| `2.release.yml`    | Gera automaticamente uma nova release usando `semantic-release` após merge na `main`.        | `workflow_run` do `test.yml` na `main`|
-| `3.deploy-docs.yml`| Publica a documentação do projeto após merge na `main`.                                      | `workflow_run` do `test.yml` na `main`|
+| `2.deploy-docs.yml`| Publica a documentação do projeto após merge na `main`.                                      | `workflow_run` do `test.yml` na `main`|
+| `3.release.yml`    | Gera automaticamente uma nova release usando `semantic-release` após merge na `main`.        | `workflow_run` do `test.yml` na `main`|
 
 ---
 
