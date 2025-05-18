@@ -1,3 +1,19 @@
+# [1.2.0](https://github.com/heliomarpm/tsapp-template/compare/v1.1.0...v1.2.0) (2025-05-18)
+
+
+### Bug Fixes
+
+* :recycle: ajustar configuração de branches no .releaserc ([72ccfb1](https://github.com/heliomarpm/tsapp-template/commit/72ccfb19515d53ee8bdcb7d66dbf339d1797cb2b))
+* :recycle: ajustar configuração do workflow de release ([7d555c0](https://github.com/heliomarpm/tsapp-template/commit/7d555c0a75c62dc6ea401c9c0d5135b5c2dfb18c))
+
+
+### Features
+
+* **ci:** :sparkles: adicionar workflow para criação/atualização automática de PR ([685fb1d](https://github.com/heliomarpm/tsapp-template/commit/685fb1d35b66bb2b471be437ecb0c22fd600d345))
+* **docs:** :sparkles: adicionar logo à documentação ([b5a132a](https://github.com/heliomarpm/tsapp-template/commit/b5a132a3238477e5b4c7f9f1606bf56f10a356d0))
+* **docs:** :sparkles: habilitar URLs limpas na configuração do VitePress ([4cdf24f](https://github.com/heliomarpm/tsapp-template/commit/4cdf24ff7509996e39e947008fd0c04309f6d68e))
+* update test ([34dcea5](https://github.com/heliomarpm/tsapp-template/commit/34dcea53e942e7190451cc136c207212caf2748b))
+
 # [1.1.0](https://github.com/heliomarpm/tsapp-template/compare/v1.0.0...v1.1.0) (2025-05-18)
 
 
