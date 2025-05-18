@@ -1,10 +1,10 @@
 name: Release
 on:
-  workflow_run:
-    workflows: ["Test"]
-    branches: [main]
-    types:
-      - completed
+  # workflow_run:
+  #   workflows: ["Test"]
+  #   branches: [main]
+  #   types:
+  #     - completed
 
   # push:
   #   branches: [main]
@@ -15,17 +15,19 @@ on:
   #     - 'package-lock.json'
   #     - '.github/workflows/2.release.yml'
 
-  # pull_request:
-  #   branches: [main]
-  #   paths:
-  #     - 'src/**'
-  #     - '.releaserc'
-  #     - 'package.json'
-  #     - 'package-lock.json'
-  #     - '.github/workflows/2.release.yml'
+  pull_request:
+    branches: [main]
+    types: [closed]
+    paths:
+      - 'src/**'
+      - '.releaserc'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/*release.yml'
 jobs:
   release:
-    if: github.event.workflow_run.conclusion == 'success'
+    # if: github.event.workflow_run.conclusion == 'success'
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -42,11 +44,6 @@ jobs:
           fetch-depth: 0 # Crítico para o semantic-release analisar histórico
           fetch-tags: true
 
-      - name: Confirm current branch
-        run: git branch --show-current
-
-      # - run: git fetch origin "+refs/heads/*:refs/remotes/origin/*"
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -55,6 +52,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci --ignore-scripts # Evita scripts pós-install desnecessários
+
+      - name: Confirm current branch
+        run: git branch --show-current
 
       - name: Debug commits
         run: |
@@ -70,13 +70,13 @@ jobs:
       #     git remote -v
       #     git branch -a
 
-      - name: Create GitHub token permissions
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
+      # - name: Create GitHub token permissions
+      #   run: |
+      #     git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      #     git config --global user.name "github-actions[bot]"
 
       - name: Run Semantic Release
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
           # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}  # Opcional: só se publicar no npm
         run: npx semantic-release --debug
