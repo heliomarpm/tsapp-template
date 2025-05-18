@@ -24,7 +24,7 @@ export default defineConfig({
 	themeConfig: {
 		// https://vitepress.dev/reference/default-theme-config
 		// outlineTitle: 'This page',
-		logo: { src: "../logo.png", width: 24, height: 24 },
+		logo: { src: "./logo.png", width: 24, height: 24 },
 		nav: [
 			{ text: "Home", link: "/" },
 			// { text: 'Examples', link: '/markdown-examples' }

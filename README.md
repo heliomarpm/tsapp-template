@@ -88,7 +88,7 @@ Perfect for developers who need:
 Workflow | Description | Trigger
 :-- | :-- | :--
 `0.test.yml` | Runs unit tests | Push/PR to `main` or `develop`
-`1.create_pr.yml` | Creates or updates a pull request from `develop` to `main` | Push to `develop`
+`1.create-pr.yml` | Creates or updates a pull request from `develop` to `main` | Push to `develop`
 `2.release.yml` | Generates changelog, tags, and releases | Push to `main`
 `3.deploy-docs.yml` | Deploys documentation and coverage badge | After a successful release 
 
