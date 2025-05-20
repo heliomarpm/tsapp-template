@@ -47,8 +47,8 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          npx vitest run --coverage --outputFile=coverage/coverage-summary.json
-          # Garante que a pasta de relatório existe
+          # npx vitest run --coverage  --outputFile=coverage/coverage-summary.json
+          npx vitest run --coverage
           mkdir -p coverage/lcov-report
 
       - name: Generate Coverage Badge
@@ -56,12 +56,14 @@ jobs:
           # Extrai a cobertura do relatório HTML
           # COVERAGE=$(grep -E "All files.+[0-9.]+%" coverage/lcov-report/index.html | awk '{print $NF}' || echo "unknown")
           COVERAGE=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
-          echo "{\"coverage\":\"$COVERAGE\"}" > coverage/coverage-badge.json
+          echo "{\"schemaVersion\":1,\"label\":\"coverage\",\"message\":\"${COVERAGE}%\",\"color\":\"green\"}" > coverage/coverage-badge.json
           echo "✔️ Coverage: $COVERAGE"
 
       - name: Copy coverage badge to docs
         run: |
-          cp coverage/coverage-badge.json .docs/.vitepress/dist/
+          mkdir -p .docs/.vitepress/dist/coverage
+          cp coverage/coverage-badge.json .docs/.vitepress/dist/coverage/
+          cp -r coverage/lcov-report/* .docs/.vitepress/dist/coverage/
           cp logo.png .docs/.vitepress/dist/
 
 
