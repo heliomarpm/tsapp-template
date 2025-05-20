@@ -3,13 +3,18 @@ name: Test
 on:
   push:
     branches: [main, develop]
+    # paths:
+    #   - 'src/**'
+
   pull_request:
     branches: [main]
+    # paths:
+    #   - 'src/**'
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

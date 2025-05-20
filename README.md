@@ -4,7 +4,7 @@
 
   [![CodeQL][url-codeql-badge]][url-codeql]
   [![Test][url-test-badge]][url-test]
-  ![Coverage][url-coverage-badge]
+  [![Coverage][url-coverage-badge]][url-coverage-report]  
   [![Release][url-release-badge]][url-release]
 
   ![Node.js](https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white)
@@ -196,14 +196,15 @@ For GitHub Actions workflows to create, edit, and manage **Pull Requests via API
 
 1. Create a Classic PAT in:
    `GitHub Settings → Developer Settings → Personal access tokens → Tokens (classic)`
-2. Enable the scopes:
 
+2. Enable the scopes:
    * `repo`
    * `workflow`
-3. Save the token as a secret in the repository:
 
+3. Save the token as a secret in the repository:
    * `Settings → Secrets and variables → Actions`
    * Suggested name: `PAT_TOKEN`
+
 4. Reference in workflow:
 
 ```yaml
@@ -233,19 +234,19 @@ env:
 
 1. Create a Fine-grained PAT in:
    `GitHub Settings → Developer Settings → Personal access tokens → Fine-grained tokens`
-2. Set:
 
+2. Set:
    * Repositories: select all required or check "All repositories"
    * Permissions:
-
      * `Contents: Read and write`
      * `Actions: Read and write`
      * `Metadata: Read-only`
      * (Optional) `Bypass branch protections`
-3. Save the token as a secret in the repository:
 
+3. Save the token as a secret in the repository:
    * `Settings → Secrets and variables → Actions`
    * Suggested name: `PAT_TOKEN`
+
 4. Reference in workflow:
 
 ```yaml
@@ -341,7 +342,9 @@ Help us maintain and improve this template:
 <!-- GitHub Actions badges -->
 [url-test-badge]: https://github.com/heliomarpm/tsapp-template/actions/workflows/0.test.yml/badge.svg
 [url-test]: https://github.com/heliomarpm/tsapp-template/actions/workflows/0.test.yml
-[url-coverage-badge]: https://img.shields.io/badge/coverage-dynamic.svg?label=coverage&color=informational&style=flat&logo=jest&query=$.coverage&url=https://heliomarpm.github.io/tsapp-template/coverage-badge.json
+[url-coverage-badge2]: https://img.shields.io/badge/coverage-dynamic.svg?label=coverage&color=informational&style=flat&logo=jest&query=$.coverage&url=https://heliomarpm.github.io/tsapp-template/coverage-badge.json
+[url-coverage-badge]: https://img.shields.io/endpoint?url=https://heliomarpm.github.io/tsapp-template/coverage/coverage-badge.json
+[url-coverage-report]: https://heliomarpm.github.io/tsapp-template/coverage
 
 <!-- https://img.shields.io/endpoint?url=https://heliomarpm.github.io/tsapp-template/coverage-badge.json&label=coverage&suffix=%25 -->
 
