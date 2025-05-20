@@ -2,12 +2,12 @@ name: Test
 
 on:
   push:
-    branches: [main, develop]
+    branches: [develop]
     # paths:
     #   - 'src/**'
 
   pull_request:
-    branches: [main]
+    branches: [main, develop]
     # paths:
     #   - 'src/**'
 
