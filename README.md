@@ -345,8 +345,8 @@ Help us maintain and improve this template:
 
 <!-- https://img.shields.io/endpoint?url=https://heliomarpm.github.io/tsapp-template/coverage-badge.json&label=coverage&suffix=%25 -->
 
-[url-release-badge]: https://github.com/heliomarpm/tsapp-template/actions/workflows/2.release.yml/badge.svg
-[url-release]: https://github.com/heliomarpm/tsapp-template/actions/workflows/2.release.yml
+[url-release-badge]: https://github.com/heliomarpm/tsapp-template/actions/workflows/3.release.yml/badge.svg
+[url-release]: https://github.com/heliomarpm/tsapp-template/actions/workflows/3.release.yml
 
 [url-codeql-badge]: https://github.com/heliomarpm/tsapp-template/actions/workflows/codeql.yml/badge.svg 
 [url-codeql]: https://github.com/heliomarpm/tsapp-template/security/code-scanning
