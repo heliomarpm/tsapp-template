@@ -2,7 +2,9 @@
 <h1>
   <br> 📦 TypeScript Application Template
 
-  [![CodeQL][url-codeql-badge]][url-codeql]
+<!-- [Overview](/jecs/coverage/index.html){target="_self"} -->
+
+  ![CodeQL][url-codeql-badge]
   [![Test][url-test-badge]][url-test]
   [![Coverage][url-coverage-badge]][url-coverage-report]  
   [![Release][url-release-badge]][url-release]
@@ -352,4 +354,3 @@ Help us maintain and improve this template:
 [url-release]: https://github.com/heliomarpm/tsapp-template/actions/workflows/3.release.yml
 
 [url-codeql-badge]: https://github.com/heliomarpm/tsapp-template/actions/workflows/codeql.yml/badge.svg 
-[url-codeql]: https://github.com/heliomarpm/tsapp-template/security/code-scanning
