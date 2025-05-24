@@ -6,7 +6,7 @@
 
   ![CodeQL][url-codeql-badge]
   [![Test][url-test-badge]][url-test]
-  [![Coverage][url-coverage-badge]][url-coverage-report]  
+  [![Coverage][url-coverage-badge]][url-coverage-report]
   [![Release][url-release-badge]][url-release]
 
   <!-- ![Node.js](https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white)
