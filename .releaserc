@@ -1,7 +1,7 @@
 {
   "branches": [
 		"main",
-    {"name": "release", "prerelease": true},
+		{"name": "release", "prerelease": true},
 		{"name": "develop", "prerelease": false}
 	],
   "plugins":
