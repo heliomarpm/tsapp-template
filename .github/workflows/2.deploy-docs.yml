@@ -42,9 +42,6 @@ jobs:
         run:
           npm run docs
 
-      - name: Debug Files
-        run: ls -R .docs/.vitepress/dist
-
       - name: Run tests with coverage
         run: |
           # npx vitest run --coverage  --outputFile=coverage/coverage-summary.json
@@ -66,20 +63,21 @@ jobs:
           cp -r coverage/lcov-report/* .docs/.vitepress/dist/coverage/
           cp logo.png .docs/.vitepress/dist/
 
-
       # - name: Copy additional files
       #   run: |
       #     mkdir -p .docs/.vitepress/typedoc/docs/
       #     cp LICENSE .docs/.vitepress/typedoc
       #     cp ./docs/*.md .docs/.vitepress/typedoc/docs/
 
+      - name: Show deployed files
+        run: ls -R .docs/.vitepress/dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .docs/.vitepress/dist
-          destination_dir: ./
+          # destination_dir: ./
           keep_files: false
           force_orphan: true  # Importante para evitar conflitos
           # cname: seu-dominio.com  # Opcional se usar domínio customizado
