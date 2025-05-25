@@ -2,15 +2,15 @@
 <h1>
   <br> 📦 TypeScript Application Template
 
-<!-- [Overview](/jecs/coverage/index.html){target="_self"} -->
+<!-- [Overview](/coverage/index.html){target="_self"} -->
 
-  ![CodeQL][url-codeql-badge]
+  [![CodeQL][url-codeql-badge]][url-codeql]
   [![Test][url-test-badge]][url-test]
-  [![Coverage][url-coverage-badge]][url-coverage-report]  
+  [![Coverage][url-coverage-badge]][url-coverage-report]
   [![Release][url-release-badge]][url-release]
 
-  ![Node.js](https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white)
-  ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+  <!-- ![Node.js](https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white)
+  ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) -->
   ![Biome](https://img.shields.io/badge/biomejs-%23404d59.svg?style=for-the-badge&logo=biome&logoColor=white)
   ![Semantic Release](https://img.shields.io/badge/semantic_release-%23000000.svg?style=for-the-badge&logo=semantic-release&logoColor=white)
   [![License](https://img.shields.io/github/license/heliomarpm/tsapp-template?style=for-the-badge)](./LICENSE)
@@ -30,7 +30,7 @@
 
 ## 📚 Summary
 
-**Professional Template** with CI/CD-enabled, versioning with Semantic Release and Typedoc+VitePress documentation..
+**Professional Template** with CI/CD-enabled, versioning with Semantic Release and Typedoc+VitePress documentation.
 
 ## 🔀 PR Workflow
 
@@ -66,7 +66,7 @@ gitGraph
 **Project Scaffolding**
 - ☑️ Docs: Contribution Guide & Code of Conduct
 - ☑️ Husky Git Hooks
-- ☑️ Automated CHANGELOG.md
+- ☑️ Automated CHANGELOG.md with Semantic Release
 - ☑️ TypeDoc + Vitepress for Documentation Site
 
 ### ❓ When to Use This Template
@@ -141,7 +141,55 @@ npx degit heliomarpm/tsapp-template your-app
 cd your-app
 npm install
 ```
+### 🛠️ Initial Setup
+1. Replace template info:
+   - Update `name` and `description` in `package.json`
+   - Set version to `0.0.0` in `package.json`
+   - Replace all references to `tsapp-template` and `heliomarpm` in `package.json` and `README.md`
+   - Delete `CHANGELOG.md`
 
+2. Configure GitHub repository:
+   - Enable GitHub Actions (Settings → Actions → General)
+   - Set up branch protection rules (optional)
+   - Configure GitHub Pages for documentation
+  
+<!-- - Generate [npm authentication token](https://docs.npmjs.com/creating-and-viewing-access-tokens) and copy it.
+- [Navigate to your GitHub repository page, click Settings and then Secrets. Click on New repository secret, fill in `NPM_TOKEN` as the Name, paste the npm token created on the previous step inside the Value field and hit Add secret. -->
+
+---
+## 📈 Semantic Versioning
+
+This template uses [semantic-release](https://semantic-release.gitbook.io/) for automated version management and package publishing. Version numbers are determined automatically based on commit messages:
+
+| Commit Message               | Release Type | Example Version |
+| :--------------------------- | :----------- | :-------------- |
+| `revert(scope): message`     | Patch        | 1.0.1           |
+| `fix(scope): message`        | Patch        | 1.0.1           |
+| `feat(scope): message`       | Minor        | 1.1.0           |
+| `BREAKING CHANGE: message`   | Major        | 2.0.0           |
+
+### 📝 Commit Message Format
+
+```bash
+<type>(<scope>): <short summary>
+│       │             │
+│       │             └─⫸ Summary in present tense. Not capitalized. No period at the end.
+│       │
+│       └─⫸ Commit Scope: core|docs|config|cli|etc.
+│
+└─⫸ Commit Type: fix|feat|build|chore|ci|docs|style|refactor|perf|test
+```
+
+When a commit is pushed to `main` branch:
+1. semantic-release analyzes commit messages
+2. Determines the next version number
+3. Generates changelog
+4. Creates a git tag
+5. Publishes the release to GitHub
+
+> **Note**: To trigger a release, commits must follow the [Conventional Commits](https://www.conventionalcommits.org/) specification.
+
+---
 ## 📦 Project Scripts
 
 * `npm run lint` — run linter and fixer
@@ -354,3 +402,4 @@ Help us maintain and improve this template:
 [url-release]: https://github.com/heliomarpm/tsapp-template/actions/workflows/3.release.yml
 
 [url-codeql-badge]: https://github.com/heliomarpm/tsapp-template/actions/workflows/codeql.yml/badge.svg 
+[url-codeql]: https://github.com/heliomarpm/tsapp-template/security/code-scanning

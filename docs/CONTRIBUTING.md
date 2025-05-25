@@ -32,6 +32,36 @@ Thank you for considering contributing to this project! Your help makes it bette
 
 Issues and feature requests are welcome! Use the [Issues tab](https://github.com/heliomarpm/tsapp-template/issues) to report bugs or request new features.
 
+
+## Commit Message Format
+
+All commit messages on `main` should follow the conventional commits format. For example:
+
+```text
+ feat: Allowed provided config object to extend other configs
+  ^
+(type)
+```
+
+The supported types are:
+
+- No version update:
+  - **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+  - **chore**: A change that doesn't fall under any other types that affect the patch version such as removing an unused file
+  - **ci**: Changes to the CI configuration files and scripts
+  - **docs**: Documentation only changes
+  - **perf**: A code change that improves performance
+  - **refactor**: A code change that neither fixes a bug nor adds a feature
+  - **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+  - **test**: Adding missing tests or correcting existing tests
+- Patch version update:
+  - **fix**: A bug fix
+  - **revert**: Reverts a previous commit
+- Minor version update:
+  - **feat**: A new feature
+- Major version update:
+  - **breaking** or **breaking change**: A breaking change
+
 ## 📑 License
 
 By contributing, you agree that your contributions will be licensed under the project’s [MIT License](./LICENSE.md).

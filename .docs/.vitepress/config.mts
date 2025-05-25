@@ -5,7 +5,7 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
 	title: "TSApp Template",
 	base: "/tsapp-template/",
-	description: "Template for Node and Typescript Application",
+	description: "✨ Template for Node and Typescript Application",
 	cleanUrls: true,
 	// head: [
 	// 	["meta", { name: "msvalidate.01", content: "F4D861C3287B312C6D147ECEC9B85E5E" }],
@@ -26,7 +26,7 @@ export default defineConfig({
 		// outlineTitle: 'This page',
 		logo: { src: "./logo.png", width: 24, height: 24 },
 		nav: [
-			{ text: "Home", link: "/" },
+			{ text: "Guide", link: "/app/_media/CONTRIBUTING" },
 			// { text: 'Examples', link: '/markdown-examples' }
 		],
 
