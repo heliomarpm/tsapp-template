@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/heliomarpm/tsapp-template/compare/v1.2.0...v1.3.0) (2025-05-25)
+
+
+### Features
+
+* ajustar formatação do arquivo de configuração ([015ba8e](https://github.com/heliomarpm/tsapp-template/commit/015ba8ed5beb2488d82543264dac3995ab263a79))
+
 # [1.2.0](https://github.com/heliomarpm/tsapp-template/compare/v1.1.0...v1.2.0) (2025-05-18)
 
 
