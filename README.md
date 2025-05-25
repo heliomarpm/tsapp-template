@@ -151,10 +151,12 @@ npm install
 2. Configure GitHub repository:
    - Enable GitHub Actions (Settings → Actions → General)
    - Set up branch protection rules (optional)
-   - Configure GitHub Pages for documentation
-  
-<!-- - Generate [npm authentication token](https://docs.npmjs.com/creating-and-viewing-access-tokens) and copy it.
-- [Navigate to your GitHub repository page, click Settings and then Secrets. Click on New repository secret, fill in `NPM_TOKEN` as the Name, paste the npm token created on the previous step inside the Value field and hit Add secret. -->
+   - Configure GitHub Pages for documentation:
+     1. Go to `Settings` → `Pages`
+     2. In the `Build and deployment` section, under **Source**, select `Deploy from a branch`
+     3. Choose the `gh-pages` branch and the `/ (root)` directory
+     4. Save the changes
+     5. Access the public URL displayed on the same page to confirm the deployment
 
 ---
 ## 📈 Semantic Versioning
