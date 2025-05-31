@@ -5,6 +5,7 @@
   "description": "Template para bibliotecas TypeScript: commits semânticos, documentação com TypeDoc, CI/CD com GitHub Actions e publicação automática no npm — pré-configurado com Husky, Vitest e Conventional Changelog.",
   "author": "Heliomar P. Marques",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "homepage": "https://github.com/heliomarpm/tsapp-template#readme",
   "bugs": {
