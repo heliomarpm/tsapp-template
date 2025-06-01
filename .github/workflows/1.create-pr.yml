@@ -54,13 +54,26 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate commit log
+      # - name: Generate commit log
+      #   run: |
+      #     echo "" > .github/commit_log.md
+      #     echo "---" > .github/commit_log.md
+      #     echo "### 📜 Commits incluídos:" > .github/commit_log.md
+      #     git log origin/main..origin/develop --oneline >> .github/commit_log.md
+      #     cat .github/pull_request_auto.md .github/commit_log.md >> .github/pr_body.md
+
+      - name: Build PR body with coverage table
         run: |
-          echo "" > .github/commit_log.md
-          echo "---" > .github/commit_log.md
-          echo "### 📜 Commits incluídos:" > .github/commit_log.md
-          git log origin/main..origin/develop --oneline >> .github/commit_log.md
-          cat .github/pull_request_auto.md .github/commit_log.md >> .github/pr_body.md
+          npm ci
+          npx vitest --reporter=github-actions --coverage --no-watch > coverage-report.txt
+
+          echo "" > .github/coverage.md
+          echo "---" >> .github/coverage.md
+          echo "### 📊 Test Coverage Summary" >> .github/coverage.md
+          echo "\`\`\`" >> .github/coverage.md
+          cat coverage-report.txt >> .github/coverage.md
+          echo "\`\`\`" >> .github/coverage.md
+          cat .github/pull_request_auto.md .github/coverage.md >> .github/pr_body.md
 
       - name: Check if PR exists and create if not exists
         run: |
@@ -80,7 +93,7 @@ jobs:
           else
             # Se a PR já existir, atualiza o corpo
             echo "Encontrado PR aberta com o número $PR_NUMBER, atualizando..."
-            gh pr edit $PR_NUMBER --body-file .github/pr_body.md
+            gh pr edit $PR_NUMBER --body-file .github/pr_body.md --add-assignee "${{ github.actor }}"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
