@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/heliomarpm/tsapp-template/compare/v1.3.0...v1.4.0) (2025-06-23)
+
+
+### Features
+
+* **tests:** :sparkles: adicionar configuração do Vitest ([6ba2b77](https://github.com/heliomarpm/tsapp-template/commit/6ba2b772f1e8ca5f6ff55b7c486233384ed93a1c))
+
 # [1.3.0](https://github.com/heliomarpm/tsapp-template/compare/v1.2.0...v1.3.0) (2025-05-25)
 
 
